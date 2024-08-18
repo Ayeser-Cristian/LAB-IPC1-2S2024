@@ -12,11 +12,18 @@ import clase4.Clase4;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import clase4.modals.Render;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Administrador extends JFrame implements ActionListener {
+public class Administrador extends JFrame implements ActionListener, MouseListener {
 
-    JButton btn_salir, btnRegistro;
+    JButton btn_salir, btnRegistro, btnCargarMatrix;
+    JTable table_matriz;
 
     public Administrador() {
 
@@ -97,6 +104,38 @@ public class Administrador extends JFrame implements ActionListener {
         titleLabel.setBounds(200, 10, 100, 30);
         pest2.add(titleLabel);
 
+        //Botones
+        //Carga
+        btnCargarMatrix = new JButton("Carga Matrix");
+        btnCargarMatrix.setBounds(580, 150, 180, 50);
+        btnCargarMatrix.addActionListener(this);
+        pest2.add(btnCargarMatrix);
+
+        //Tabla                         0,      1,       2
+        String[] columnsNameMatrix = {"Codigo", "Nombre", "Accion"};
+
+        /*Object[][] dataMatriz = {
+            {"1", "Matriz", new JButton("Ver")}
+        };*/
+
+        Object[][] dataMatriz = Clase4.mostrarMatriz();
+        table_matriz = new JTable();
+
+        DefaultTableModel ModeloTabla = new DefaultTableModel(dataMatriz, columnsNameMatrix) {
+            public boolean isCellEditable(int row, int colum) {
+                return false;
+            }
+        };
+
+        table_matriz.setModel(ModeloTabla);
+        table_matriz.setDefaultRenderer(Object.class, new Render());
+        table_matriz.addMouseListener(this);
+
+        JScrollPane scrollpaneMatriz = new JScrollPane(table_matriz);
+        scrollpaneMatriz.setBounds(25, 80, 550, 300);
+
+        pest2.add(scrollpaneMatriz);
+
         //=====================================================================0
         // Agregar el JTabbedPane al contenido del JFrame
         this.getContentPane().add(tabbedPane);
@@ -108,7 +147,14 @@ public class Administrador extends JFrame implements ActionListener {
         this.setResizable(false);  // No permite redimensionar la ventana
         this.setVisible(true); // Hace visible la ventana
     }
-    
+
+    private void actualizarTablaMatriz() {
+        DefaultTableModel model = (DefaultTableModel) table_matriz.getModel();
+        Object[][] data = Clase4.mostrarMatriz();
+        String[] columnsNameMatrix = {"Codigo", "Nombre", "Accion"};
+        model.setDataVector(data, columnsNameMatrix);
+    }
+
     //=========Método Abstracto para los eventos==============
     @Override
     public void actionPerformed(ActionEvent Ae) {
@@ -120,7 +166,59 @@ public class Administrador extends JFrame implements ActionListener {
         } else if (Ae.getSource() == btn_salir) {  //Si le da click al botón Salir entra a este evento
             this.dispose(); //Cerrar la ventana actual
             Login vtn_login = new Login(); //Crear una ventana de Login
+        } else if (Ae.getActionCommand().equals("Carga Matrix")) {
+            JFileChooser My_fileChooser = new JFileChooser();
+
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos CSV", "csv");
+
+            My_fileChooser.setFileFilter(filter);
+
+            int seleccion = My_fileChooser.showOpenDialog(this);
+
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                File archivoSeleccionado = My_fileChooser.getSelectedFile();
+                Clase4.lecturaCSV(archivoSeleccionado);
+
+            }
+            
+            actualizarTablaMatriz();
+
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int column = table_matriz.getColumnModel().getColumnIndexAtX(e.getX());
+        int row = e.getY() / table_matriz.getRowHeight();
+
+        if (row < table_matriz.getRowCount() && row >= 0 && column == 2) {
+            Object codigo_get = table_matriz.getValueAt(row, 0);
+            Object nombre_get = table_matriz.getValueAt(row, 1);
+            System.out.println(codigo_get);
+            System.out.println(nombre_get);
+
+        }
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
 }
