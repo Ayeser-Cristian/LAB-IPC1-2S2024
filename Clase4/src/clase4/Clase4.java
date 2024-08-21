@@ -75,8 +75,6 @@ public class Clase4 {
         return matrizObjetos;
     }
 
-    
-    
     public static void lecturaCSV(File archivo_csv) {
         try {
             Scanner lectura = new Scanner(archivo_csv);
@@ -133,5 +131,71 @@ public class Clase4 {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    
+    
+    public static Matrix buscarCodigo(String codigo){
+        
+        for(Matrix obtenido_matrix:listaMatrix ){
+            
+            if(obtenido_matrix.getCodigo().equals(codigo)){
+                return obtenido_matrix;
+            }
+        }
+        
+        return null;
+    }
+    
+    public static void EscrituraHTML(String codigo){
+        
+        Matrix obteniedoMatriz=buscarCodigo(codigo);
+        int [][] matrizImprimir;
+        String name;
+        
+        if(obteniedoMatriz!=null){
+            matrizImprimir=obteniedoMatriz.getPatron();
+            name=obteniedoMatriz.getNombre();
+        }else{
+            matrizImprimir= new int[0][0];
+            name="nofound";
+        }
+                            //name = Matriz.html
+                            //./Reportes/Matriz.html
+        String direccionFile="./Reportes/"+name+".html";
+        try (PrintWriter write = new PrintWriter(new File (direccionFile))){
+            
+            //println -- con salto de línea
+            // print -- sin salto de línea
+            String inicioHtml="""
+            <html>
+                <head>
+                              
+                </head>
+                <body>
+                    <table border = "1">      
+                              """;
+            write.println(inicioHtml);
+            
+            for (int i = 0; i < matrizImprimir.length; i++) {
+                write.println("<tr>");
+                for (int j = 0; j < matrizImprimir[i].length; j++) {
+                    write.println("<td>"+matrizImprimir[i][j]+"</td>");
+                }
+                
+                write.println("</tr>");
+                //System.out.println("");
+            }
+            
+            write.println("</table>");
+            write.println("</body>");
+            
+            write.println("</html>");
+            
+            System.out.println("Archivo creado exitosamente");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 }

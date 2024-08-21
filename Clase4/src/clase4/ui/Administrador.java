@@ -194,8 +194,11 @@ public class Administrador extends JFrame implements ActionListener, MouseListen
         if (row < table_matriz.getRowCount() && row >= 0 && column == 2) {
             Object codigo_get = table_matriz.getValueAt(row, 0);
             Object nombre_get = table_matriz.getValueAt(row, 1);
+            
+            String codigo= codigo_get.toString();
             System.out.println(codigo_get);
-            System.out.println(nombre_get);
+            
+            Clase4.EscrituraHTML(codigo);
 
         }
 
