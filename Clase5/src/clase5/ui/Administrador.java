@@ -22,7 +22,7 @@ import java.awt.event.MouseListener;
 
 public class Administrador extends JFrame implements ActionListener, MouseListener {
 
-    JButton btn_salir, btnRegistro, btnCargarMatrix;
+    JButton btn_salir, btnRegistro, btnCargarMatrix,btnCrearMatrix ;
     JTable table_matriz;
 
     public Administrador() {
@@ -110,6 +110,12 @@ public class Administrador extends JFrame implements ActionListener, MouseListen
         btnCargarMatrix.setBounds(580, 150, 180, 50);
         btnCargarMatrix.addActionListener(this);
         pest2.add(btnCargarMatrix);
+        
+        //Registrar Matriz
+        btnCrearMatrix = new JButton("Crear Matrix");
+        btnCrearMatrix.setBounds(580, 250, 180, 50);
+        btnCrearMatrix.addActionListener(this);
+        pest2.add(btnCrearMatrix);
 
         //Tabla                         0,      1,       2
         String[] columnsNameMatrix = {"Codigo", "Nombre", "Accion"};
@@ -183,6 +189,11 @@ public class Administrador extends JFrame implements ActionListener, MouseListen
             
             actualizarTablaMatriz();
             Clase5.SerealizarMatriz();
+        }else if(Ae.getSource()==btnCrearMatrix){
+            this.dispose();
+            FormularioMatrix vtn_formMatrix= new FormularioMatrix();
+            
+            
         }
     }
 

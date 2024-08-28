@@ -12,6 +12,7 @@ import clase5.ui.Login;
 import clase5.ui.Administrador;
 import clase5.modals.Estudiante;
 import clase5.modals.Matrix;
+import clase5.ui.FormularioMatrix;
 import java.util.ArrayList;
 
 import java.io.File;
@@ -47,6 +48,7 @@ public class Clase5 {
             listaEstudiantes = (ArrayList<Estudiante>) DeserealizarEstudiante();
 
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
+            //FormularioMatrix vtn = new FormularioMatrix();
             Login vtn_login = new Login();
         } catch (Exception e) {
             e.printStackTrace();
@@ -283,5 +285,59 @@ public class Clase5 {
 
         return new ArrayList<>();
 
+    }
+
+    public static int[][] lecturaCSVPatron(File archivo_csv) {
+         int[][] matrizTemp =null;
+        try {
+
+            Scanner lecturaTamanio = new Scanner(archivo_csv);
+            Scanner lecturaMatrix = new Scanner(archivo_csv);
+
+            int tamanio = 0;
+            while (lecturaTamanio.hasNextLine()) {
+                String linea = lecturaTamanio.nextLine();// 1,4,6,1,5,3
+                String[] numerosLista = linea.split(","); //[1,4,6,1,5,3]
+                tamanio = numerosLista.length; //Obtengo el tamaño de la lista
+                break;
+            }
+            lecturaTamanio.close();
+
+            matrizTemp = new int[tamanio][tamanio];
+            int contFila=0;
+            
+            while (lecturaMatrix.hasNextLine()) {
+                String linea = lecturaMatrix.nextLine();// 1,4,6,1,5,3
+                String[] numerosLista = linea.split(","); //[1,4,6,1,5,3]
+
+                for (int j = 0; j < matrizTemp[contFila].length; j++) {
+                    matrizTemp[contFila][j]=Integer.parseInt(numerosLista[j].trim());
+                }
+                
+                contFila++;
+            }
+
+            lecturaMatrix.close();
+            
+            for (int i = 0; i < matrizTemp.length; i++) {
+                for (int j = 0; j < matrizTemp[i].length; j++) {
+                    System.out.print("["+ matrizTemp[i][j]+"] ");
+                }
+                System.out.println("");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        if(matrizTemp==null){
+            matrizTemp= new int[0][0];
+        }
+        
+        return matrizTemp;
+        
+    }
+
+    public static void agregarMatriz(String codigo, String nombre, int[][] patron){
+        listaMatrix.add(new Matrix(codigo, nombre, patron));
     }
 }
