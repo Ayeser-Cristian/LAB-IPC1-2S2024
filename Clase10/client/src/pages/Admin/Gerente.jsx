@@ -44,7 +44,7 @@ const Gerente = () => {
                                         <i className="fas fa-edit"></i> {/*Modificar*/}
                                     </button>
                                     <button className="btn btn-danger" style={{ marginLeft: '10px' }}>
-                                        <i class="fa-solid fa-trash"></i>
+                                        <i className="fa-solid fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>

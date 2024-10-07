@@ -1,0 +1,38 @@
+[
+	{
+		"codigo": "EMP-P01",
+		"nombre": "Sofía Martínez",
+		"contrasenia": "pas123",
+		"edad": 34
+	},
+	{
+		"codigo": "EMP-P02",
+		"nombre": "Ricardo Sánchez",
+		"contrasenia": "123abc",
+		"edad": 45
+	},
+	{
+		"codigo": "EMP-P03",
+		"nombre": "Valentina Ruiz",
+		"contrasenia": "qwerty",
+		"edad": 29
+	},
+	{
+		"codigo": "EMP-P04",
+		"nombre": "Javier Gómez",
+		"contrasenia": "xyz123",
+		"edad": 38
+	},
+	{
+		"codigo": "EMP-P05",
+		"nombre": "Claudia Torres",
+		"contrasenia": "1234",
+		"edad": 26
+	},
+	{
+		"codigo": "EMP-P06",
+		"nombre": "Fernando Díaz",
+		"contrasenia": "mypassword",
+		"edad": 31
+	}
+]

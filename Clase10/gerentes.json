@@ -1,0 +1,38 @@
+[
+	{
+		"codigo": "GER-P01",
+		"nombre": "Juan Pérez",
+		"contrasenia": "1234",
+		"edad": 28
+	},
+	{
+		"codigo": "GER-P02",
+		"nombre": "Ana Gómez",
+		"contrasenia": "abcd",
+		"edad": 32
+	},
+	{
+		"codigo": "GER-P03",
+		"nombre": "Luis Torres",
+		"contrasenia": "qwer",
+		"edad": 25
+	},
+	{
+		"codigo": "GER-P04",
+		"nombre": "María López",
+		"contrasenia": "5678",
+		"edad": 30
+	},
+	{
+		"codigo": "GER-P05",
+		"nombre": "Carlos Ramírez",
+		"contrasenia": "pass123",
+		"edad": 27
+	},
+	{
+		"codigo": "GER-P06",
+		"nombre": "Laura Fernández",
+		"contrasenia": "xyz789",
+		"edad": 29
+	}
+]
