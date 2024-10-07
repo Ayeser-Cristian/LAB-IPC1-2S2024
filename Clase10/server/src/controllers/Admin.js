@@ -1,113 +1,120 @@
-const Gerente = require('../models/Gerente')
-const Empleado = require('../models/Empleado')
-const {list_empleados, list_gerentes}= require('../database/dataList')
+// Importa los modelos (clases) de Gerente y Empleado desde la carpeta de models
+const Gerente = require('../models/Gerente');
+const Empleado = require('../models/Empleado');
 
-//Para Empleados
-function CargarEmpleados(req, res){
+// Importa las listas donde se almacenan los empleados y gerentes desde la base de datos
+const { list_empleados, list_gerentes } = require('../database/dataList');
+
+// Función para cargar (agregar) empleados
+function CargarEmpleados(req, res) {
     try {
-        const userArray=req.body
-        for(const userData of userArray){
-            const {codigo, nombre, contrasenia, edad}=userData
+        // Obtiene el array de empleados desde el cuerpo de la solicitud HTTP
+        const userArray = req.body;
 
-            const newEmpleado= new Empleado(codigo, nombre, contrasenia, edad)
-            list_empleados.push(newEmpleado)
+        // Recorre el array de empleados
+        for (const userData of userArray) {
+            // Extrae los campos necesarios de cada empleado
+            const { codigo, nombre, contrasenia, edad } = userData;
+
+            // Crea un nuevo empleado usando el modelo Empleado
+            const newEmpleado = new Empleado(codigo, nombre, contrasenia, edad);
+
+            // Agrega el nuevo empleado a la lista global de empleados
+            list_empleados.push(newEmpleado);
         }
-        res.json(
-            {
-                mensaje: "Empleados Agregados correctamente",
-                state: true
-            }
-        )
+
+        // Envía una respuesta JSON indicando que los empleados fueron agregados correctamente
+        res.json({
+            mensaje: "Empleados Agregados correctamente",
+            state: true
+        });
 
     } catch (error) {
-        console.log(error)
-        res.json(
-            {
-                mensaje: "Ocurrió un error al procesar el JSON",
-                state: false
-            }
-        )
+        // En caso de error, lo registra en la consola y envía una respuesta JSON con el estado de error
+        console.log(error);
+        res.json({
+            mensaje: "Ocurrió un error al procesar el JSON",
+            state: false
+        });
     }
-    
 }
 
-function GetAllEmpleados(req, res){
+// Función para obtener todos los empleados
+function GetAllEmpleados(req, res) {
     try {
-        
-        res.json(
-            {
-                usuarios:list_empleados,
-                state: true
-            }
-        )
+        // Envía una respuesta JSON con la lista de empleados
+        res.json({
+            usuarios: list_empleados,
+            state: true
+        });
 
     } catch (error) {
-        console.log(error)
-        res.json(
-            {
-                mensaje: "Ocurrió un error al obtener todos los empleados",
-                state: false
-            }
-        )
+        // En caso de error, lo registra en la consola y envía una respuesta JSON con el estado de error
+        console.log(error);
+        res.json({
+            mensaje: "Ocurrió un error al obtener todos los empleados",
+            state: false
+        });
     }
-    
 }
 
-//Para Gerentes
-function CargarGerentes(req, res){
+// Función para cargar (agregar) gerentes
+function CargarGerentes(req, res) {
     try {
-        const userArray=req.body
-        for(const userData of userArray){
-            const {codigo, nombre, contrasenia, edad}=userData
+        // Obtiene el array de gerentes desde el cuerpo de la solicitud HTTP
+        const userArray = req.body;
 
-            const newGerente= new Gerente(codigo, nombre, contrasenia, edad)
-            list_gerentes.push(newGerente)
+        // Recorre el array de gerentes
+        for (const userData of userArray) {
+            // Extrae los campos necesarios de cada gerente
+            const { codigo, nombre, contrasenia, edad } = userData;
+
+            // Crea un nuevo gerente usando el modelo Gerente
+            const newGerente = new Gerente(codigo, nombre, contrasenia, edad);
+
+            // Agrega el nuevo gerente a la lista global de gerentes
+            list_gerentes.push(newGerente);
         }
-        res.json(
-            {
-                mensaje: "Gerentes Agregados correctamente",
-                state: true
-            }
-        )
+
+        // Envía una respuesta JSON indicando que los gerentes fueron agregados correctamente
+        res.json({
+            mensaje: "Gerentes Agregados correctamente",
+            state: true
+        });
 
     } catch (error) {
-        console.log(error)
-        res.json(
-            {
-                mensaje: "Ocurrió un error al procesar el JSON",
-                state: false
-            }
-        )
+        // En caso de error, lo registra en la consola y envía una respuesta JSON con el estado de error
+        console.log(error);
+        res.json({
+            mensaje: "Ocurrió un error al procesar el JSON",
+            state: false
+        });
     }
-    
 }
 
-function GetAllGerentes(req, res){
+// Función para obtener todos los gerentes
+function GetAllGerentes(req, res) {
     try {
-        
-        res.json(
-            {
-                usuarios:list_gerentes,
-                state: true
-            }
-        )
+        // Envía una respuesta JSON con la lista de gerentes
+        res.json({
+            usuarios: list_gerentes,
+            state: true
+        });
 
     } catch (error) {
-        console.log(error)
-        res.json(
-            {
-                mensaje: "Ocurrió un error al obtener todos los gerentes",
-                state: false
-            }
-        )
+        // En caso de error, lo registra en la consola y envía una respuesta JSON con el estado de error
+        console.log(error);
+        res.json({
+            mensaje: "Ocurrió un error al obtener todos los gerentes",
+            state: false
+        });
     }
-    
 }
 
-
-module.exports= {
+// Exporta las funciones para que puedan ser usadas en otros archivos
+module.exports = {
     CargarEmpleados,
     GetAllEmpleados,
     CargarGerentes,
     GetAllGerentes
-}
+};
