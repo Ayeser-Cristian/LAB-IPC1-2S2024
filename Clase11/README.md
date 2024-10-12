@@ -57,7 +57,7 @@ createRoot(document.getElementById('root')).render(
 )
 ```
 
- - ```npm install react-router-dom```: Añade íconos de Font Awesome a la interfaz.  
+ - ```npm install @fortawesome/fontawesome-free```: Añade íconos de Font Awesome a la interfaz.  
  Nota: Es necesario colocar en el main.jsx lo siguiente: ```  import
 '@fortawesome/fontawesome-free/css/all.min.css';```. Ejemplo:
 
