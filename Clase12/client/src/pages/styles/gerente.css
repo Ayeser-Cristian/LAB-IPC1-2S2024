@@ -1,0 +1,20 @@
+.conteiner-gerente {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que los elementos se desplacen a la siguiente línea si no hay suficiente espacio */
+    justify-content: center;
+    gap: 20px;
+    /* Espacio entre las cartas */
+    margin-top: 60px;
+    /* Agrega un margen superior para separar del Navbar */
+}
+
+.card {
+    flex: 0 1 calc(50% - 10px);
+    /* 
+        flex-grow: 0;   -> No permite que la carta crezca más allá de su tamaño base.
+        flex-shrink: 1; -> Permite que la carta se encoja si es necesario.
+        flex-basis: calc(50% - 10px); -> Asigna un tamaño base de aproximadamente el 50% del contenedor, 
+                                          menos 10 píxeles, para permitir espacio entre dos cartas.
+    */
+}

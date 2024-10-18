@@ -1,0 +1,32 @@
+[
+	{
+		"codigo": "PY-0770",
+		"nombre": "Creacion de sistema Web Jurídico USAC",
+		"gerente": "GER-P01"
+	},
+	{
+		"codigo": "PY-0781",
+		"nombre": "Desarrollo de Aplicación Móvil para Servicios de Salud",
+		"gerente": "GER-P02"
+	},
+	{
+		"codigo": "PY-0782",
+		"nombre": "Implementación de Sistema de Gestión de Inventarios",
+		"gerente": "GER-P03"
+	},
+	{
+		"codigo": "PY-0783",
+		"nombre": "Mejoramiento de Plataforma de E-learning",
+		"gerente": "GER-P04"
+	},
+	{
+		"codigo": "PY-0784",
+		"nombre": "Creación de Sitio Web para Turismo Local",
+		"gerente": "GER-P05"
+	},
+	{
+		"codigo": "PY-0785",
+		"nombre": "Sistema de Reservas para Restaurantes",
+		"gerente": "GER-P01"
+	}
+]

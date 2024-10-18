@@ -1,0 +1,81 @@
+
+/* Contenedor del formulario */
+.login-body {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa de la ventana del navegador */
+}
+
+
+/* Contenedor del formulario */
+.login-container {
+    background-color: #f9f0f0;
+    /* Color de fondo blanco para el contenedor */
+    padding: 20px;
+    /* Espaciado interno de 20px en todos los lados */
+    border-radius: 10px;
+    /* Bordes redondeados con un radio de 10px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para dar profundidad */
+    min-width: 400px;
+    /* Ancho mínimo de 400px para el contenedor */
+}
+
+
+
+/* Grupo de formulario */
+.form-group {
+    margin-bottom: 25px;
+    /* Margen inferior de 15px entre grupos de formulario */
+}
+
+
+/* Etiquetas y entradas del formulario */
+.form-group label {
+    display: flex;
+    /* Usamos flex para alinear mejor los elementos */
+    margin-bottom: 5px;
+    /* Margen inferior de 5px entre la etiqueta y el campo de entrada */
+    color: #555;
+    /* Color de texto gris oscuro para la etiqueta */
+    font-weight: bold;
+    /* Negrita para resaltar la etiqueta */
+}
+
+.form-group input, select {
+    width: 100%;
+    /* Campo de entrada ocupa todo el ancho del contenedor */
+    padding: 10px;
+    /* Espaciado interno de 10px dentro del campo de entrada */
+    border: 1px solid #ddd;
+    /* Borde gris claro para el campo de entrada */
+    border-radius: 5px;
+    /* Bordes redondeados con un radio de 5px */
+    box-sizing: border-box;
+    /* Incluye el padding y el borde en el cálculo del ancho */
+    font-size: 16px;
+    /* Tamaño de fuente de 16px para el texto dentro del campo */
+}
+
+
+/* Botón de enviar */
+.login-button {
+    width: 100%;
+    /* Botón ocupa todo el ancho del contenedor */
+    padding: 10px;
+    /* Espaciado interno de 10px dentro del botón */
+    background-color: #307602;
+    /* Color de fondo azul para el botón */
+    color: white;
+    /* Color del texto en el botón, blanco */
+    border-radius: 5px;
+    /* Bordes redondeados con un radio de 5px */
+}
+
+.login-button:hover {
+    background-color: #21c704;
+    /* Cambia el color de fondo a un azul más oscuro al pasar el mouse */
+}
+
+
