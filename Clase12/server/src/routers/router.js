@@ -7,7 +7,8 @@ const { CargarEmpleados,
     GetAllEmpleados,
     CargarGerentes,
     GetAllGerentes,
-    CargarProyectos } = require('../controllers/Admin')
+    CargarProyectos,
+    EditarGerente } = require('../controllers/Admin')
 
 const { login } = require('../controllers/login')
 /* 
@@ -27,5 +28,9 @@ router.post('/cargarempleado', CargarEmpleados)
 router.post('/cargargerente', CargarGerentes)
 router.post('/cargarproyecto', CargarProyectos)
 router.post('/login', login)
+
+
+// PUT
+router.put('/editargerente', EditarGerente);
 
 module.exports = router  //Importamos el router para usarlo en "app.js"

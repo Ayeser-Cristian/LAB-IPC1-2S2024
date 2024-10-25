@@ -175,11 +175,43 @@ function CargarProyectos(req, res) {
 }
 
 
+
+function EditarGerente(req, res) {
+    try {
+        const { codigo } = req.body; // Obtener el código del JSON
+        const index = list_gerentes.findIndex(gerente => gerente.codigo === codigo);
+
+        if (index !== -1) {
+            const { nombre, contrasenia, edad } = req.body;
+            // Actualizamos los campos
+            list_gerentes[index].nombre = nombre || list_gerentes[index].nombre;
+            list_gerentes[index].contrasenia = contrasenia || list_gerentes[index].contrasenia;
+            list_gerentes[index].edad = edad || list_gerentes[index].edad;
+
+            res.json({
+                mensaje: 'Gerente actualizado correctamente',
+                state: true
+            });
+        } else {
+            res.json({
+                mensaje: 'Gerente no encontrado',
+                state: false
+            });
+        }
+    } catch (error) {
+        res.json({
+            mensaje: 'Ocurrió un error al editar el gerente',
+            state: false
+        });
+    }
+}
+
 // Exporta las funciones para que puedan ser usadas en otros archivos
 module.exports = {
     CargarEmpleados,
     GetAllEmpleados,
     CargarGerentes,
     GetAllGerentes,
-    CargarProyectos
+    CargarProyectos,
+    EditarGerente
 };
